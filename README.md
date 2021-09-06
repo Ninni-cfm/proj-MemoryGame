@@ -31,7 +31,7 @@ _Demo:_ https://ninni-cfm.github.io/proj-MemoryGame/
 
 **History:**
 
-V1.0 (202-09-06 21:40):
+V1.0 - First release:
 
 -   Spiel funktioniert
 
