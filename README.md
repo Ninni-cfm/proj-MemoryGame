@@ -33,7 +33,8 @@ _Demo:_ https://ninni-cfm.github.io/proj-MemoryGame/
 
 V1.0 - First release:
 
--   Spiel funktioniert
+\+ Spiel funktioniert
 
-*   Spiel-Ende Bildschirm fehlt noch
-*   Karten-Animation nicht vollstaendig, nur nach verdeckt drehen ist animiert!
+\- Spiel-Ende Bildschirm fehlt noch
+
+\- Karten-Animation nicht vollstaendig, nur nach verdeckt drehen ist animiert!
