@@ -1,1 +1,0 @@
-sass --watch --no-source-map assets/scss/:assets/css/
