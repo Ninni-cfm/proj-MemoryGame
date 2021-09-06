@@ -1,0 +1,11 @@
+// Hard reset, no margins and paddings for all elements
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background: url("../img/background.jpg") center/cover no-repeat;
+    font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+}

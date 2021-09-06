@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background: url("../img/background.jpg") center/cover no-repeat;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.turn-card-forwards {
+  animation: turn-card 0.5s forwards linear;
+}
+
+.turn-card-backwards {
+  animation: turn-card 0.5s backwards linear;
+}
+
+@keyframes turn-card {
+  0% {
+    transform: perspective(400px) rotateY(0deg);
+  }
+  100% {
+    background: #888;
+    transform: perspective(400px) rotateY(180deg);
+  }
+}
+.invisible {
+  visibility: hidden;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gameTop {
+  align-self: stretch;
+  background-color: #ff000060;
+  color: white;
+  text-align: center;
+}
+.gameTop h1 {
+  font-size: 10vmin;
+  font-weight: 600;
+  font-variant: small-caps;
+  padding: 0.5rem;
+  -webkit-text-stroke: 4px #600000;
+}
+.gameTop p {
+  font-size: 6vmin;
+  padding: 0.5rem 4rem;
+  -webkit-text-stroke: 1px #600000;
+}
+.gameTopStats {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.gameBoard {
+  margin: 3vmin;
+  padding: 3vmin;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  background: whitesmoke;
+  border-radius: 5vmin;
+}
+.gameBoardCard {
+  width: 15vmin;
+  height: 15vmin;
+}
