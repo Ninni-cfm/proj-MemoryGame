@@ -45,4 +45,6 @@ V1.01 - Card animation complete
 
 \+ Timer eingebaut, Spieldauer wird angezeigt
 
-\- Spiel-Ende Bildschirm fehlt noch
+\- Spiel-Ende Bildschirm fehlt (immer) noch
+
+\- Quellcode muss noch aufgeraeumt werden!!!
