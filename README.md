@@ -38,3 +38,11 @@ V1.0 - First release:
 \- Spiel-Ende Bildschirm fehlt noch
 
 \- Karten-Animation nicht vollstaendig, nur nach verdeckt drehen ist animiert!
+
+---
+
+V1.01 - Card animation complete
+
+\+ Timer eingebaut, Spieldauer wird angezeigt
+
+\- Spiel-Ende Bildschirm fehlt noch
