@@ -44,12 +44,13 @@ let cards = [];
 let cardsClicked = [];
 
 
-
-
-
 //****************************************************************************
 const gameBoard = document.getElementById('gameBoard');
 
+
+//****************************************************************************
+let elapsedTime = -1;
+// let idTimer = null;
 
 
 //****************************************************************************
@@ -73,7 +74,8 @@ class Card {
         cardHtml.className = "gameBoardCard";
         cardHtml.className = "gameBoardCard turn-card-forwards invisible";
 
-        cardHtml.style.background = `url('${this.image}') center/cover no-repeat`;
+        // cardHtml.style.background = `url('${this.image}') center/cover no-repeat`;
+        cardHtml.style.background = '#888';
 
         cardHtml.setAttribute("data-card-position", position);
 
@@ -87,6 +89,17 @@ class Card {
 
 //****************************************************************************
 function cardClicked(e) {
+
+    if (elapsedTime < 0) {
+        let idTimer = setInterval(() => {
+
+            if (pairsFound == (maxCards / 2)) {
+                clearInterval(idTimer);
+            }
+            elapsedTime++;
+            document.getElementById('elapsedTime').textContent = new Date(0, 0, 0, 0, 0, elapsedTime).toLocaleTimeString("de");
+        }, 1000);
+    }
 
     // there are still 2 cards turned
     if (cardsClicked.length == 2) return;
@@ -116,12 +129,8 @@ function cardClicked(e) {
         cardsClicked.push(index);
         showCard(index);
     }
-    else {
-        // if the card was already clicked it's a wasted draw
-        cardsClicked.push(-1);
-    }
 
-    // if length of the array is 2, check the cards clicked
+    // if length of the array is 2 check the open cards
     if (cardsClicked.length == 2) {
         console.log('checkCardsClicked()');
         checkCardsClicked();
@@ -159,8 +168,7 @@ function checkCardsClicked() {
     cardsClicked = [];
 
     // TODO: check if all pairs have been found...
-    if (pairsFound == maxCards / 2) {
-
+    if (pairsFound == (maxCards / 2)) {
 
     }
 }
@@ -174,8 +182,12 @@ function hideCard(index) {
 
         // show the card
         const card = document.getElementById(`card${index}`)
-        card.classList.toggle('turn-card-forwards');
-        // card.classList.toggle('turn-card-backwards');
+
+        card.classList.remove(`reveal-card${index}`);
+        card.classList.add('hide-card');
+        setTimeout(() => {
+            card.style.background = '#888';
+        }, 500);
     }
 }
 
@@ -188,8 +200,11 @@ function showCard(index) {
 
         // hide the card
         const card = document.getElementById(`card${index}`)
-        // card.classList.toggle('turn-card-backwards');
-        card.classList.toggle('turn-card-forwards');
+        card.classList.remove('hide-card');
+        card.classList.add(`reveal-card${index}`);
+        setTimeout(() => {
+            card.style.background = `url('${cards[index].image}') center/cover no-repeat`;
+        }, 400);
     }
 }
 
@@ -243,4 +258,64 @@ function getRandom(minValue, maxValue) {
     return Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
 }
 
-// console.log(document.getElementsByClassName('gameBoardCard'));
+
+
+
+//****************************************************************************
+// Dynamic CSS functions
+let dynamicCssSheetName = 'dynamicCssSheet';
+
+
+createDynamicCssSheet();
+addAnimations();
+
+function test() {
+    let idx = 1;
+    document.getElementById(`card${idx}`).classList.add(`reveal-card${idx}`);
+}
+
+//----------------------------------------------------------------------------
+function createDynamicCssSheet() {
+    let dynamicCssSheet = document.createElement('style');
+    dynamicCssSheet.id = dynamicCssSheetName;
+    dynamicCssSheet.title = dynamicCssSheetName;
+    document.head.appendChild(dynamicCssSheet);
+}
+
+//----------------------------------------------------------------------------
+function getDynamicCssSheet(unique_title) {
+    for (var i = 0; i < document.styleSheets.length; i++) {
+        var sheet = document.styleSheets[i];
+        console.log(sheet);
+        if (sheet.title == unique_title) {
+            return sheet;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------
+function addAnimations() {
+    let dynamicCssSheet = getDynamicCssSheet(dynamicCssSheetName)
+
+    for (let i = 0; i < cards.length; i++) {
+
+        const card = cards[i];
+
+        dynamicCssSheet.insertRule(`
+        .reveal-card${i} {
+            animation: reveal-card${i} 0.5s backwards linear;
+        }`, dynamicCssSheet.cssRules.length);
+
+        dynamicCssSheet.insertRule(`
+        @keyframes reveal-card${i} {
+            0% {
+                transform: perspective(400px) rotateY(180deg);
+            }
+            100% {
+                background: url('${card.image}') center/cover no-repeat;
+                transform: perspective(400px) rotateY(0deg);
+            }
+        }`, dynamicCssSheet.cssRules.length);
+    }
+}
+
