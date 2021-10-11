@@ -1,5 +1,11 @@
 # proj-MemoryGame
 
+_Source:_ https://github.com/Ninni-cfm/proj-MemoryGame
+
+_Demo:_ https://ninni-cfm.github.io/proj-MemoryGame/
+
+---
+
 **JS Vertiefung CodeFlow Übung lev3_20: memory - Aufgabenstellung**
 
 In dieser Übung programmierst du den Spieleklassiker Memory.
@@ -20,12 +26,6 @@ Für diese Aufgabe benötigst Du möglicherweise die folgende Eigenschaften:
 <b>Bonus</b>
 
 -   Mache ein schöneres Design :-)
-
----
-
-_Source:_ https://github.com/Ninni-cfm/proj-MemoryGame
-
-_Demo:_ https://ninni-cfm.github.io/proj-MemoryGame/
 
 ---
 
